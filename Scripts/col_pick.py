@@ -6,6 +6,8 @@ import cv2
 import pygame
 from PIL import ImageGrab
 from functools import partial
+from tkinter import *
+from tkinter import messagebox
 
 if os.environ.get('USERNAME') != "wheez":
     ImageGrab.grab = partial(ImageGrab.grab, all_screens=True)
@@ -156,7 +158,10 @@ def on_activate_col_pick():
 
 
 def on_activate_kill():
-    print('<scroll_lock> pressed (QUIT)')
+    print('ESCAPE key pressed (QUIT)')
+    Tk().wm_withdraw()
+    messagebox.showinfo('Exiting Sam\'s Color Picker', 'Press To Close This Notification')
+    pause(4)
     pygame.quit()
     raise MyException("kill")
 
